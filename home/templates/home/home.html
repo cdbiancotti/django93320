@@ -1,15 +1,264 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Galería de Arte | Inicio</title>
+
+    <!-- Bootstrap 5 -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <style>
+        body {
+            background-color: #e9edf1;
+            color: #263238;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .navbar {
+            background-color: #263746;
+        }
+
+        .navbar-brand {
+            color: #d9e2e8 !important;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .nav-link {
+            color: #c6d1d8 !important;
+            margin-left: 10px;
+            padding: 8px 18px !important;
+            border-radius: 6px;
+            transition: background-color 0.2s ease;
+        }
+
+        .nav-link:hover {
+            background-color: #405563;
+            color: #ffffff !important;
+        }
+
+        .hero {
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            background:
+                linear-gradient(
+                    rgba(38, 55, 70, 0.82),
+                    rgba(38, 55, 70, 0.88)
+                ),
+                url("https://images.unsplash.com/photo-1561214115-f2f134cc4912?auto=format&fit=crop&w=1800&q=80")
+                center / cover;
+        }
+
+        .hero-content {
+            max-width: 750px;
+        }
+
+        .hero h1 {
+            color: #edf2f4;
+            font-size: 3.5rem;
+            font-weight: 600;
+        }
+
+        .hero p {
+            color: #cbd5db;
+            font-size: 1.2rem;
+            line-height: 1.8;
+        }
+
+        .btn-gallery {
+            background-color: #607d8b;
+            color: white;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 6px;
+            transition: background-color 0.2s ease;
+        }
+
+        .btn-gallery:hover {
+            background-color: #78909c;
+            color: white;
+        }
+
+        .section-title {
+            color: #344955;
+            font-weight: 600;
+        }
+
+        .info-card {
+            background-color: #f4f6f7;
+            border: 1px solid #d5dde2;
+            border-radius: 8px;
+            padding: 30px;
+            height: 100%;
+            box-shadow: 0 3px 10px rgba(38, 55, 70, 0.08);
+        }
+
+        .info-card h3 {
+            color: #455a64;
+            font-size: 1.3rem;
+        }
+
+        .info-card p {
+            color: #687780;
+            line-height: 1.7;
+        }
+
+        footer {
+            background-color: #263746;
+            color: #aebbc3;
+        }
+    </style>
 </head>
+
 <body>
-    <h1>Bienvenido a mi sitio web</h1>
-    <p>Este es un ejemplo sencillo de una página web con Django.</p>
-    <script>
-        console.log("Hola desde el script de la página");
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'home' %}">
+                Galería de Arte
+            </a>
+
+            <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarNav"
+                aria-controls="navbarNav"
+                aria-expanded="false"
+                aria-label="Mostrar navegación"
+            >
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'listar_pinturas' %}">
+                            Pinturas
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="">
+                            Autores
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="">
+                            Galerías
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero / Home -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="mb-4">
+                    Un recorrido por el arte
+                </h1>
+
+                <p class="mb-4">
+                    Descubrí pinturas, conocé a sus autores y explorá
+                    algunas de las galerías de arte más importantes
+                    alrededor del mundo.
+                </p>
+
+                <a href="{% url 'listar_pinturas' %}" class="btn btn-gallery">
+                    Explorar pinturas
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección informativa -->
+    <section class="py-5">
+        <div class="container">
+
+            <div class="text-center mb-5">
+                <h2 class="section-title">
+                    Explorá nuestra colección
+                </h2>
+
+                <p class="text-muted mt-2">
+                    Arte, artistas y espacios culturales en un solo lugar.
+                </p>
+            </div>
+
+            <div class="row g-4">
+
+                <div class="col-md-4">
+                    <div class="info-card">
+                        <h3>Pinturas</h3>
+                        <p>
+                            Descubrí diferentes obras de arte,
+                            sus estilos, épocas y características.
+                        </p>
+
+                        <a href="{% url 'listar_pinturas' %}"
+                           class="btn btn-outline-secondary">
+                            Ver pinturas
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="info-card">
+                        <h3>Autores</h3>
+                        <p>
+                            Conocé a los artistas detrás de algunas
+                            de las obras más destacadas de la historia.
+                        </p>
+
+                        <a href=""
+                           class="btn btn-outline-secondary">
+                            Ver autores
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="info-card">
+                        <h3>Galerías</h3>
+                        <p>
+                            Explorá galerías y espacios dedicados
+                            al arte en diferentes lugares del mundo.
+                        </p>
+
+                        <a href=""
+                           class="btn btn-outline-secondary">
+                            Ver galerías
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-4">
+        <div class="container text-center">
+            <small>
+                © 2026 Galería de Arte · Explorando el arte alrededor del mundo
+            </small>
+        </div>
+    </footer>
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
     </script>
+
 </body>
 </html>
